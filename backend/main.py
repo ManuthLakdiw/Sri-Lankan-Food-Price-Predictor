@@ -15,8 +15,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-BASE_DIR = os.path.dirname(os.path.abspath(_file_))
-MODEL_PATH = os.path.join(BASE_DIR, "crop_price_model.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "..", "data", "crop_price_model.pkl")
 
 try:
     model_pipeline = joblib.load(MODEL_PATH)
