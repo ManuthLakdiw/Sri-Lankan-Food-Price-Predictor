@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #1a1a1a;
+    overflow: hidden;
+}
+
+#root {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 260px;
+    background-color: #ffffff;
+    border-right: 1px solid #eaeaea;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    gap: 15px;
+}
+
+.nav-item {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 15px;
+    color: #4b5563;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background-color: #f3f4f6;
+    color: #0a2e1d;
+}
+
+.nav-item.active {
+    background-color: #0a2e1d;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Main Workspace */
+main {
+    flex: 1;
+    padding: 40px 50px;
+    overflow-y: auto;
+}
+
+.view-section {
+    display: none;
+}
+
+.view-section.active {
+    display: block;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #0a2e1d;
+    margin-bottom: 30px;
+}
+
+/* Grid Layout */
+.content-grid {
+    display: grid;
+    grid-template-columns: 460px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Cards */
+.card {
+    background: #ffffff;
+    border: 1px solid #f1f1f1;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 24px;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.select-box, .input-box {
+    width: 100%;
+    padding: 12px 14px;
+    background-color: #fafafa;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #1f2937;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.select-box:focus, .input-box:focus {
+    border-color: #0a2e1d;
+    background-color: #ffffff;
+}
+
+/* Price Type Segmented Control */
+.price-type-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #f3f4f6;
+    padding: 4px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.price-type-option {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #4b5563;
+    transition: all 0.2s;
+}
+
+.price-type-option.active {
+    background: #0a2e1d;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 46, 29, 0.2);
+}
+
+/* Buttons */
+.btn-primary {
+    width: 100%;
+    background-color: #0a2e1d;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #134029;
+}
+
+/* Result Display (View 1) */
+.result-card {
+    background: #ffffff;
+    border: 1px solid #f1f1f1;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.result-subtitle {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+    margin-bottom: 15px;
+}
+
+.price-display {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.currency-label {
+    font-size: 38px;
+    font-weight: 700;
+    color: #0a2e1d;
+}
+
+.price-value {
+    font-size: 56px;
+    font-weight: 700;
+    color: #0a2e1d;
+    line-height: 1;
+}
+
+.price-unit {
+    font-size: 18px;
+    color: #6b7280;
+    align-self: flex-end;
+    margin-bottom: 8px;
+}
+
+/* Market Cards Stack (View 2) */
+.market-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.market-result-card {
+    background: #ffffff;
+    border: 1px solid #f1f1f1;
+    border-radius: 14px;
+    padding: 24px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.market-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.market-price-tag {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0a2e1d;
+}
+
+.market-price-tag span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #6b7280;
+}
