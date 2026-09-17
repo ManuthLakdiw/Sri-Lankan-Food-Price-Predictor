@@ -38,3 +38,47 @@ def predict_price(payload: PredictionRequest):
         "currency": "LKR",
         "unit": "KG"
     }
+
+class MarketAnalysisRequest(BaseModel):
+    commodity: str
+    year: int
+    month: int
+
+ALL_MARKETS = [
+    'Ampara', 'Anuradhapura', 'Badulla', 'Bandarawela', 'Batticaloa', 
+    'Colombo City', 'Dammbagalla', 'Dehiattakandiya', 'Economic Centre - Peliyagoda', 
+    'Economic Centre-Dambulla', 'Economic Centre-Maradagahamula', 'Economic Centre-Pettah', 
+    'Embilipitiya', 'Fish market-Negombo', 'Fish market-Peliyagoda', 'Galenbindunuwewa', 
+    'Galle', 'Gampaha', 'Hambantota', 'Hanguranketha', 'Jaffna', 'Kalutara', 'Kandy', 
+    'Kegalle', 'Keppetipola (DEC}', 'Kilinochchi', 'Kurunegala', 'Mannar', 'Matale', 
+    'Matara', 'Meegoda(DEC)', 'Monaragala', 'Mulaitivu', 'Mullativu', 'National Average', 
+    'Nikaweratiya', 'Nuwara Eliya', 'Polonnaruwa', 'Puttalam', 'Rathnapura', 
+    'Thambuttegama', 'Tissamaharama', 'Trincomalee', 'Vavuniya'
+]
+
+@app.post("/analyze-markets")
+def analyze_best_markets(payload: MarketAnalysisRequest):
+    batch_data = []
+    
+    for market in ALL_MARKETS:
+        batch_data.append({
+            'market': market, 
+            'commodity': payload.commodity,
+            'year': payload.year,
+            'month': payload.month
+        })
+        
+    input_df = pd.DataFrame(batch_data)
+    predictions = model_pipeline.predict(input_df)
+    
+    results = [
+        {"market": ALL_MARKETS[i], "predicted_price": round(float(predictions[i]), 2)} 
+        for i in range(len(ALL_MARKETS))
+    ]
+    
+    sorted_results = sorted(results, key=lambda x: x["predicted_price"], reverse=False)
+    
+    return {
+        "commodity_analyzed": payload.commodity,
+        "highly_recommended_markets": sorted_results[:3],
+    }
