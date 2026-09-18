@@ -53,7 +53,7 @@ export default function App() {
   const handlePredictPrice = async () => {
     setIsLoading1(true);
     try {
-      const response = await fetch('http://127.0.0.1:8000/predict', {
+      const response = await fetch('http://51.21.105.73/predict', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -77,7 +77,7 @@ export default function App() {
   const handleAnalyzeMarkets = async () => {
     setIsLoading2(true);
     try {
-      const response = await fetch('http://127.0.0.1:8000/analyze-markets', {
+      const response = await fetch('http://51.21.105.73/analyze-markets', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
