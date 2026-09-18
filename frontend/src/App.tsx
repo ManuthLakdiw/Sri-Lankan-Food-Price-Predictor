@@ -53,7 +53,7 @@ export default function App() {
   const handlePredictPrice = async () => {
     setIsLoading1(true);
     try {
-      const response = await fetch('http://51.21.105.73/predict', {
+      const response = await fetch('https://51-21-105-73.sslip.io/predict', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -77,7 +77,7 @@ export default function App() {
   const handleAnalyzeMarkets = async () => {
     setIsLoading2(true);
     try {
-      const response = await fetch('http://51.21.105.73/analyze-markets', {
+      const response = await fetch('https://51-21-105-73.sslip.io/analyze-markets', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
